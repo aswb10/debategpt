@@ -1,22 +1,30 @@
 import { connectToDB } from "@utils/database"
-import Prompt from "@models/prompt"
+import Case from "@models/case"
 
 export const POST = async (req, res) => {
-    const { userId, prompt, tag } = await req.json()
+    const { userId, argument, topic, side } = await req.json()
 
     try {
         await connectToDB()
-        console.log('new prompts')
-        const newPrompt = new Prompt({
+        console.log('new cases')
+        let logical
+        if (side === 'pro') {
+            logical = true
+        } else {
+            logical = false
+        }
+        const newCase = new Case({
             creator: userId,
-            prompt,
-            tag
+            argument,
+            topic,
+            side: logical,
+            counterargument: ''
         })
 
-        await newPrompt.save()
+        await newCase.save()
 
-        return new Response(JSON.stringify(newPrompt), { status: 201 })
+        return new Response(JSON.stringify(newCase), { status: 201 })
     } catch (error) {
-        return new Response("Failed to create a new prompt", {status: 500 })
+        return new Response("Failed to create a new case", {status: 500 })
     }
 }

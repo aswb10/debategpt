@@ -3,10 +3,10 @@ import Feed from '@components/Feed'
 const Home = () => {
   return (
     <section className="w-full flex-center flex-col">
-        <h1 className="head_text text-center">Discover & Share</h1>
+        <h1 className="head_text text-center">Fix Your Case</h1>
         <br className="max-md:hidden"/>
-        <span className="orange_gradient text-center"> AI Powered Prompts</span>
-        <p className="desc text-center">Promptopia is an open-source AI prompting tool</p>
+        <span className="orange_gradient text-center">AI Generated Debate Blocks</span>
+        <p className="desc text-center">DebateGPT is an AI-Powered Debate Assistant</p>
 
         <Feed />
     </section>

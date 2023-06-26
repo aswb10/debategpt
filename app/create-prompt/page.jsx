@@ -15,8 +15,9 @@ const CreatePrompt
 
     const [submitting, setSubmitting] = useState(false)
     const [post, setPost] = useState({
-        prompt: '',
-        tag: ''
+        argument: '',
+        topic: '',
+        side: ''
     })
 
     const createPrompt = async (e) => {
@@ -27,9 +28,10 @@ const CreatePrompt
             const response = await fetch('/api/prompt/new', {
                 method: 'POST',
                 body: JSON.stringify({
-                    prompt: post.prompt,
+                    argument: post.argument,
                     userId: session?.user.id,
-                    tag: post.tag
+                    topic: post.topic,
+                    side: post.side
                 })
             })
 
